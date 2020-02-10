@@ -2,7 +2,8 @@
 #include "ControllerIf.hpp"
 #include "AuthorizationIf.hpp"
 #include "DBManagerIf.hpp"
-//#include "ServiceHandlerIf.hpp"
+//#include "ServiceFactoryIf.hpp"
+#include "ServiceManagerIf.hpp"
 
 namespace RestServer
 {
@@ -13,8 +14,14 @@ class Controller : public ControllerIf
     // {
     // implement with DBManager
     // }
-    Controller(std::shared_ptr<AuthorizationIf> a_authorization, std::shared_ptr<DBManagerIf> dbmanager): authorizeRequests(true), 
-    authorization(a_authorization), dbmanager(dbmanager){}
+    Controller(std::shared_ptr<AuthorizationIf> a_authorization, 
+               std::shared_ptr<DBManagerIf> dbmanager, 
+               std::unique_ptr<RestService::ServiceManagerIf> serviceManager): 
+               authorizeRequests(true), 
+               authorization(a_authorization), 
+               dbmanager(dbmanager), 
+               serviceManager(std::move(serviceManager)){}
+               
     void login(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) override;
     void protectedRoute(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) override;
 
@@ -28,6 +35,7 @@ class Controller : public ControllerIf
     bool authorizeRequests;
     std::shared_ptr<AuthorizationIf> authorization;
     std::shared_ptr<DBManagerIf> dbmanager;
+    std::unique_ptr<RestService::ServiceManagerIf> serviceManager;
 
 };
 }

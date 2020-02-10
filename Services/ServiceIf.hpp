@@ -5,6 +5,7 @@ namespace RestService
     class ServiceIf
     {
         public:
-        TaskResult handleRequest(const Task& task);
+        virtual TaskResult handleRequest(const Task& task) = 0;
+        virtual ~ServiceIf();
     };
 }
