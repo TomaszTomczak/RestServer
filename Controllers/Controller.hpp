@@ -24,6 +24,7 @@ class Controller : public ControllerIf
                
     void login(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) override;
     void protectedRoute(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) override;
+    void helloWorld(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) override;
 
     private: 
     bool getTokenFromHeader(const Pistache::Rest::Request &request, std::string& token);

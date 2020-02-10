@@ -3,6 +3,7 @@
 #include "FakeDB.hpp"
 #include "RestEndpoint.hpp"
 #include "ServiceManager.hpp"
+#include "HelloWorldService.hpp"
 
 #include <memory>
 
@@ -31,12 +32,16 @@ int main(int argc, char *argv[])
 
     //StatsEndpoint stats(addr, auth);
     std::unique_ptr<RestService::ServiceManagerIf> serviceManager = std::make_unique<RestService::ServiceManager>();
+
+    serviceManager->registerService(std::make_unique<RestService::HelloWorldService>());
+
    // serviceManager->registerService(std::move(RestService::Se));
 
     std::shared_ptr<RestServer::AuthorizationIf> authorization = std::make_shared<RestServer::Authorization>(key, key);
     std::shared_ptr<RestServer::DBManagerIf> dbmanager = std::make_shared<RestServer::FakeDB>();
     std::shared_ptr<RestServer::ControllerIf> controller = std::make_shared<RestServer::Controller>(authorization, 
-                                                                                                    dbmanager);
+                                                                                                    dbmanager,
+                                                                                                    std::move(serviceManager));
     std::unique_ptr<RestServer::RestEndpoint> endpoint = std::make_unique<RestServer::RestEndpoint>(addr, controller);
 
 

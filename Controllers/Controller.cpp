@@ -1,5 +1,6 @@
 #include "Controller.hpp"
 #include "jwt/jwt.hpp"
+#include "Task.hpp"
 
 namespace RestServer
 {
@@ -58,6 +59,35 @@ void Controller::protectedRoute(const Pistache::Rest::Request &request, Pistache
         if (result)
         {
             response.send(Pistache::Http::Code::Ok, "Witam "+userId);
+        }
+        else
+        {
+            response.send(Pistache::Http::Code::Forbidden, "unauthorized");
+        }
+}
+
+void Controller::helloWorld(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response)
+{
+        Guard guard(controllerLock);
+
+        std::string userId;
+        std::string token;
+        bool result = getTokenFromHeader(request, token);
+        result &= authorization->isAuthorized(token, userId);
+
+        
+        RestService::Task tsk;
+        RestService::TaskResult tskres;
+        tsk.request = RestService::RequestType::HELLOWORLD;
+        
+        if (result)
+        {
+          tskres = serviceManager->handleRequest(tsk);
+        }
+
+        if (result && tskres.result)
+        {
+            response.send(Pistache::Http::Code::Ok, tskres.someData);
         }
         else
         {

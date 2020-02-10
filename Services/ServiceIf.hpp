@@ -1,3 +1,4 @@
+#pragma once
 #include "Task.hpp"
 
 namespace RestService
@@ -6,6 +7,6 @@ namespace RestService
     {
         public:
         virtual TaskResult handleRequest(const Task& task) = 0;
-        virtual ~ServiceIf();
+        virtual ~ServiceIf() = default;
     };
 }

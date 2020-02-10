@@ -21,6 +21,7 @@ void RestEndpoint::setupRoutes()
 
     Routes::Post(router, "/login", Routes::bind(&ControllerIf::login, controller.get()));
     Routes::Get(router, "/protected", Routes::bind(&ControllerIf::protectedRoute, controller.get()));
+    Routes::Get(router, "/helloworld", Routes::bind(&ControllerIf::helloWorld, controller.get()));
 }
 
 } // namespace RestServer

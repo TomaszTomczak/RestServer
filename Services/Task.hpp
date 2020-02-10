@@ -1,7 +1,6 @@
 
+#pragma once
 #include <string>
-
-
 
 namespace RestService
 {
@@ -9,7 +8,8 @@ namespace RestService
 enum class RequestType // It should be included in google protocol buffer
 {
     HELLOWORLD,
-    SOMEOTHERREQUEST
+    SOMEOTHERREQUEST,
+    PROTECTEDROUTE
 };
 
 struct Task // protobuf
