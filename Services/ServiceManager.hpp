@@ -8,7 +8,7 @@ namespace RestService
     {
         public:
         void registerService(std::unique_ptr<ServiceIf> service) override;
-        TaskResult handleRequest(const Task& task) override;
+        Service::TaskResult handleRequest(const Service::Task& task) override;
 
         private:
         std::list<std::unique_ptr<ServiceIf>> services; 

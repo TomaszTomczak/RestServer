@@ -76,19 +76,20 @@ void Controller::helloWorld(const Pistache::Rest::Request &request, Pistache::Ht
         bool result = getTokenFromHeader(request, token);
         result &= authorization->isAuthorized(token, userId);
 
-        
-        RestService::Task tsk;
-        RestService::TaskResult tskres;
-        tsk.request = RestService::RequestType::HELLOWORLD;
-        
+        Service::Task helloTask;
+        Service::TaskResult taskResult; 
+        helloTask.set_request_type(Service::RequestType::HELLOWORLD);
+        auto requestData = helloTask.mutable_hello_request_data();
+        requestData->set_user_id(userId);
+              
         if (result)
         {
-          tskres = serviceManager->handleRequest(tsk);
+          taskResult = serviceManager->handleRequest(helloTask);
         }
 
-        if (result && tskres.result)
+        if (result && taskResult.has_confirm())
         {
-            response.send(Pistache::Http::Code::Ok, tskres.someData);
+            response.send(Pistache::Http::Code::Ok, taskResult.confirm().hello_response().response());
         }
         else
         {

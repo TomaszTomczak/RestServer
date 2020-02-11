@@ -31,6 +31,7 @@
 #include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
+#include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
@@ -47,39 +48,95 @@ struct TableStruct_sc_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxillaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[1]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[8]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
   static const ::PROTOBUF_NAMESPACE_ID::uint32 offsets[];
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_sc_2eproto;
-class SearchRequest;
-class SearchRequestDefaultTypeInternal;
-extern SearchRequestDefaultTypeInternal _SearchRequest_default_instance_;
+namespace Service {
+class Confirm;
+class ConfirmDefaultTypeInternal;
+extern ConfirmDefaultTypeInternal _Confirm_default_instance_;
+class HelloWorldRequestData;
+class HelloWorldRequestDataDefaultTypeInternal;
+extern HelloWorldRequestDataDefaultTypeInternal _HelloWorldRequestData_default_instance_;
+class HelloWorldRespData;
+class HelloWorldRespDataDefaultTypeInternal;
+extern HelloWorldRespDataDefaultTypeInternal _HelloWorldRespData_default_instance_;
+class OtherRequestData;
+class OtherRequestDataDefaultTypeInternal;
+extern OtherRequestDataDefaultTypeInternal _OtherRequestData_default_instance_;
+class OtherRespData;
+class OtherRespDataDefaultTypeInternal;
+extern OtherRespDataDefaultTypeInternal _OtherRespData_default_instance_;
+class Reject;
+class RejectDefaultTypeInternal;
+extern RejectDefaultTypeInternal _Reject_default_instance_;
+class Task;
+class TaskDefaultTypeInternal;
+extern TaskDefaultTypeInternal _Task_default_instance_;
+class TaskResult;
+class TaskResultDefaultTypeInternal;
+extern TaskResultDefaultTypeInternal _TaskResult_default_instance_;
+}  // namespace Service
 PROTOBUF_NAMESPACE_OPEN
-template<> ::SearchRequest* Arena::CreateMaybeMessage<::SearchRequest>(Arena*);
+template<> ::Service::Confirm* Arena::CreateMaybeMessage<::Service::Confirm>(Arena*);
+template<> ::Service::HelloWorldRequestData* Arena::CreateMaybeMessage<::Service::HelloWorldRequestData>(Arena*);
+template<> ::Service::HelloWorldRespData* Arena::CreateMaybeMessage<::Service::HelloWorldRespData>(Arena*);
+template<> ::Service::OtherRequestData* Arena::CreateMaybeMessage<::Service::OtherRequestData>(Arena*);
+template<> ::Service::OtherRespData* Arena::CreateMaybeMessage<::Service::OtherRespData>(Arena*);
+template<> ::Service::Reject* Arena::CreateMaybeMessage<::Service::Reject>(Arena*);
+template<> ::Service::Task* Arena::CreateMaybeMessage<::Service::Task>(Arena*);
+template<> ::Service::TaskResult* Arena::CreateMaybeMessage<::Service::TaskResult>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
+namespace Service {
 
+enum RequestType : int {
+  HELLOWORLD = 0,
+  OTHER = 1,
+  RequestType_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::min(),
+  RequestType_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::max()
+};
+bool RequestType_IsValid(int value);
+constexpr RequestType RequestType_MIN = HELLOWORLD;
+constexpr RequestType RequestType_MAX = OTHER;
+constexpr int RequestType_ARRAYSIZE = RequestType_MAX + 1;
+
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* RequestType_descriptor();
+template<typename T>
+inline const std::string& RequestType_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, RequestType>::value ||
+    ::std::is_integral<T>::value,
+    "Incorrect type passed to function RequestType_Name.");
+  return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
+    RequestType_descriptor(), enum_t_value);
+}
+inline bool RequestType_Parse(
+    const std::string& name, RequestType* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<RequestType>(
+    RequestType_descriptor(), name, value);
+}
 // ===================================================================
 
-class SearchRequest :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:SearchRequest) */ {
+class Task :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Service.Task) */ {
  public:
-  SearchRequest();
-  virtual ~SearchRequest();
+  Task();
+  virtual ~Task();
 
-  SearchRequest(const SearchRequest& from);
-  SearchRequest(SearchRequest&& from) noexcept
-    : SearchRequest() {
+  Task(const Task& from);
+  Task(Task&& from) noexcept
+    : Task() {
     *this = ::std::move(from);
   }
 
-  inline SearchRequest& operator=(const SearchRequest& from) {
+  inline Task& operator=(const Task& from) {
     CopyFrom(from);
     return *this;
   }
-  inline SearchRequest& operator=(SearchRequest&& from) noexcept {
+  inline Task& operator=(Task&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -97,37 +154,43 @@ class SearchRequest :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return GetMetadataStatic().reflection;
   }
-  static const SearchRequest& default_instance();
+  static const Task& default_instance();
+
+  enum DataCase {
+    kHelloRequestData = 2,
+    kOtherRequestData = 3,
+    DATA_NOT_SET = 0,
+  };
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const SearchRequest* internal_default_instance() {
-    return reinterpret_cast<const SearchRequest*>(
-               &_SearchRequest_default_instance_);
+  static inline const Task* internal_default_instance() {
+    return reinterpret_cast<const Task*>(
+               &_Task_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     0;
 
-  friend void swap(SearchRequest& a, SearchRequest& b) {
+  friend void swap(Task& a, Task& b) {
     a.Swap(&b);
   }
-  inline void Swap(SearchRequest* other) {
+  inline void Swap(Task* other) {
     if (other == this) return;
     InternalSwap(other);
   }
 
   // implements Message ----------------------------------------------
 
-  inline SearchRequest* New() const final {
-    return CreateMaybeMessage<SearchRequest>(nullptr);
+  inline Task* New() const final {
+    return CreateMaybeMessage<Task>(nullptr);
   }
 
-  SearchRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
-    return CreateMaybeMessage<SearchRequest>(arena);
+  Task* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<Task>(arena);
   }
   void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
   void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void CopyFrom(const SearchRequest& from);
-  void MergeFrom(const SearchRequest& from);
+  void CopyFrom(const Task& from);
+  void MergeFrom(const Task& from);
   PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
   bool IsInitialized() const final;
 
@@ -141,10 +204,10 @@ class SearchRequest :
   inline void SharedCtor();
   inline void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(SearchRequest* other);
+  void InternalSwap(Task* other);
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "SearchRequest";
+    return "Service.Task";
   }
   private:
   inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
@@ -169,52 +232,1086 @@ class SearchRequest :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kQueryFieldNumber = 1,
-    kPageNumberFieldNumber = 2,
-    kResultPerPageFieldNumber = 3,
+    kRequestTypeFieldNumber = 1,
+    kHelloRequestDataFieldNumber = 2,
+    kOtherRequestDataFieldNumber = 3,
   };
-  // string query = 1;
-  void clear_query();
-  const std::string& query() const;
-  void set_query(const std::string& value);
-  void set_query(std::string&& value);
-  void set_query(const char* value);
-  void set_query(const char* value, size_t size);
-  std::string* mutable_query();
-  std::string* release_query();
-  void set_allocated_query(std::string* query);
+  // .Service.RequestType request_type = 1;
+  void clear_request_type();
+  ::Service::RequestType request_type() const;
+  void set_request_type(::Service::RequestType value);
   private:
-  const std::string& _internal_query() const;
-  void _internal_set_query(const std::string& value);
-  std::string* _internal_mutable_query();
+  ::Service::RequestType _internal_request_type() const;
+  void _internal_set_request_type(::Service::RequestType value);
   public:
 
-  // int32 page_number = 2;
-  void clear_page_number();
-  ::PROTOBUF_NAMESPACE_ID::int32 page_number() const;
-  void set_page_number(::PROTOBUF_NAMESPACE_ID::int32 value);
+  // .Service.HelloWorldRequestData hello_request_data = 2;
+  bool has_hello_request_data() const;
   private:
-  ::PROTOBUF_NAMESPACE_ID::int32 _internal_page_number() const;
-  void _internal_set_page_number(::PROTOBUF_NAMESPACE_ID::int32 value);
+  bool _internal_has_hello_request_data() const;
+  public:
+  void clear_hello_request_data();
+  const ::Service::HelloWorldRequestData& hello_request_data() const;
+  ::Service::HelloWorldRequestData* release_hello_request_data();
+  ::Service::HelloWorldRequestData* mutable_hello_request_data();
+  void set_allocated_hello_request_data(::Service::HelloWorldRequestData* hello_request_data);
+  private:
+  const ::Service::HelloWorldRequestData& _internal_hello_request_data() const;
+  ::Service::HelloWorldRequestData* _internal_mutable_hello_request_data();
   public:
 
-  // int32 result_per_page = 3;
-  void clear_result_per_page();
-  ::PROTOBUF_NAMESPACE_ID::int32 result_per_page() const;
-  void set_result_per_page(::PROTOBUF_NAMESPACE_ID::int32 value);
+  // .Service.OtherRequestData other_request_data = 3;
+  bool has_other_request_data() const;
   private:
-  ::PROTOBUF_NAMESPACE_ID::int32 _internal_result_per_page() const;
-  void _internal_set_result_per_page(::PROTOBUF_NAMESPACE_ID::int32 value);
+  bool _internal_has_other_request_data() const;
+  public:
+  void clear_other_request_data();
+  const ::Service::OtherRequestData& other_request_data() const;
+  ::Service::OtherRequestData* release_other_request_data();
+  ::Service::OtherRequestData* mutable_other_request_data();
+  void set_allocated_other_request_data(::Service::OtherRequestData* other_request_data);
+  private:
+  const ::Service::OtherRequestData& _internal_other_request_data() const;
+  ::Service::OtherRequestData* _internal_mutable_other_request_data();
   public:
 
-  // @@protoc_insertion_point(class_scope:SearchRequest)
+  void clear_data();
+  DataCase data_case() const;
+  // @@protoc_insertion_point(class_scope:Service.Task)
+ private:
+  class _Internal;
+  void set_has_hello_request_data();
+  void set_has_other_request_data();
+
+  inline bool has_data() const;
+  inline void clear_has_data();
+
+  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
+  int request_type_;
+  union DataUnion {
+    DataUnion() {}
+    ::Service::HelloWorldRequestData* hello_request_data_;
+    ::Service::OtherRequestData* other_request_data_;
+  } data_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 _oneof_case_[1];
+
+  friend struct ::TableStruct_sc_2eproto;
+};
+// -------------------------------------------------------------------
+
+class TaskResult :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Service.TaskResult) */ {
+ public:
+  TaskResult();
+  virtual ~TaskResult();
+
+  TaskResult(const TaskResult& from);
+  TaskResult(TaskResult&& from) noexcept
+    : TaskResult() {
+    *this = ::std::move(from);
+  }
+
+  inline TaskResult& operator=(const TaskResult& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline TaskResult& operator=(TaskResult&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const TaskResult& default_instance();
+
+  enum DataCase {
+    kConfirm = 2,
+    kReject = 3,
+    DATA_NOT_SET = 0,
+  };
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const TaskResult* internal_default_instance() {
+    return reinterpret_cast<const TaskResult*>(
+               &_TaskResult_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    1;
+
+  friend void swap(TaskResult& a, TaskResult& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(TaskResult* other) {
+    if (other == this) return;
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline TaskResult* New() const final {
+    return CreateMaybeMessage<TaskResult>(nullptr);
+  }
+
+  TaskResult* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<TaskResult>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const TaskResult& from);
+  void MergeFrom(const TaskResult& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(TaskResult* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "Service.TaskResult";
+  }
+  private:
+  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_sc_2eproto);
+    return ::descriptor_table_sc_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kRequestTypeFieldNumber = 1,
+    kConfirmFieldNumber = 2,
+    kRejectFieldNumber = 3,
+  };
+  // .Service.RequestType request_type = 1;
+  void clear_request_type();
+  ::Service::RequestType request_type() const;
+  void set_request_type(::Service::RequestType value);
+  private:
+  ::Service::RequestType _internal_request_type() const;
+  void _internal_set_request_type(::Service::RequestType value);
+  public:
+
+  // .Service.Confirm confirm = 2;
+  bool has_confirm() const;
+  private:
+  bool _internal_has_confirm() const;
+  public:
+  void clear_confirm();
+  const ::Service::Confirm& confirm() const;
+  ::Service::Confirm* release_confirm();
+  ::Service::Confirm* mutable_confirm();
+  void set_allocated_confirm(::Service::Confirm* confirm);
+  private:
+  const ::Service::Confirm& _internal_confirm() const;
+  ::Service::Confirm* _internal_mutable_confirm();
+  public:
+
+  // .Service.Reject reject = 3;
+  bool has_reject() const;
+  private:
+  bool _internal_has_reject() const;
+  public:
+  void clear_reject();
+  const ::Service::Reject& reject() const;
+  ::Service::Reject* release_reject();
+  ::Service::Reject* mutable_reject();
+  void set_allocated_reject(::Service::Reject* reject);
+  private:
+  const ::Service::Reject& _internal_reject() const;
+  ::Service::Reject* _internal_mutable_reject();
+  public:
+
+  void clear_data();
+  DataCase data_case() const;
+  // @@protoc_insertion_point(class_scope:Service.TaskResult)
+ private:
+  class _Internal;
+  void set_has_confirm();
+  void set_has_reject();
+
+  inline bool has_data() const;
+  inline void clear_has_data();
+
+  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
+  int request_type_;
+  union DataUnion {
+    DataUnion() {}
+    ::Service::Confirm* confirm_;
+    ::Service::Reject* reject_;
+  } data_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 _oneof_case_[1];
+
+  friend struct ::TableStruct_sc_2eproto;
+};
+// -------------------------------------------------------------------
+
+class Confirm :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Service.Confirm) */ {
+ public:
+  Confirm();
+  virtual ~Confirm();
+
+  Confirm(const Confirm& from);
+  Confirm(Confirm&& from) noexcept
+    : Confirm() {
+    *this = ::std::move(from);
+  }
+
+  inline Confirm& operator=(const Confirm& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Confirm& operator=(Confirm&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const Confirm& default_instance();
+
+  enum DataCase {
+    kHelloResponse = 1,
+    kOtherResponse = 2,
+    DATA_NOT_SET = 0,
+  };
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const Confirm* internal_default_instance() {
+    return reinterpret_cast<const Confirm*>(
+               &_Confirm_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    2;
+
+  friend void swap(Confirm& a, Confirm& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(Confirm* other) {
+    if (other == this) return;
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline Confirm* New() const final {
+    return CreateMaybeMessage<Confirm>(nullptr);
+  }
+
+  Confirm* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<Confirm>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const Confirm& from);
+  void MergeFrom(const Confirm& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(Confirm* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "Service.Confirm";
+  }
+  private:
+  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_sc_2eproto);
+    return ::descriptor_table_sc_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kHelloResponseFieldNumber = 1,
+    kOtherResponseFieldNumber = 2,
+  };
+  // .Service.HelloWorldRespData hello_response = 1;
+  bool has_hello_response() const;
+  private:
+  bool _internal_has_hello_response() const;
+  public:
+  void clear_hello_response();
+  const ::Service::HelloWorldRespData& hello_response() const;
+  ::Service::HelloWorldRespData* release_hello_response();
+  ::Service::HelloWorldRespData* mutable_hello_response();
+  void set_allocated_hello_response(::Service::HelloWorldRespData* hello_response);
+  private:
+  const ::Service::HelloWorldRespData& _internal_hello_response() const;
+  ::Service::HelloWorldRespData* _internal_mutable_hello_response();
+  public:
+
+  // .Service.OtherRespData other_response = 2;
+  bool has_other_response() const;
+  private:
+  bool _internal_has_other_response() const;
+  public:
+  void clear_other_response();
+  const ::Service::OtherRespData& other_response() const;
+  ::Service::OtherRespData* release_other_response();
+  ::Service::OtherRespData* mutable_other_response();
+  void set_allocated_other_response(::Service::OtherRespData* other_response);
+  private:
+  const ::Service::OtherRespData& _internal_other_response() const;
+  ::Service::OtherRespData* _internal_mutable_other_response();
+  public:
+
+  void clear_data();
+  DataCase data_case() const;
+  // @@protoc_insertion_point(class_scope:Service.Confirm)
+ private:
+  class _Internal;
+  void set_has_hello_response();
+  void set_has_other_response();
+
+  inline bool has_data() const;
+  inline void clear_has_data();
+
+  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
+  union DataUnion {
+    DataUnion() {}
+    ::Service::HelloWorldRespData* hello_response_;
+    ::Service::OtherRespData* other_response_;
+  } data_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 _oneof_case_[1];
+
+  friend struct ::TableStruct_sc_2eproto;
+};
+// -------------------------------------------------------------------
+
+class Reject :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Service.Reject) */ {
+ public:
+  Reject();
+  virtual ~Reject();
+
+  Reject(const Reject& from);
+  Reject(Reject&& from) noexcept
+    : Reject() {
+    *this = ::std::move(from);
+  }
+
+  inline Reject& operator=(const Reject& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Reject& operator=(Reject&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const Reject& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const Reject* internal_default_instance() {
+    return reinterpret_cast<const Reject*>(
+               &_Reject_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    3;
+
+  friend void swap(Reject& a, Reject& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(Reject* other) {
+    if (other == this) return;
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline Reject* New() const final {
+    return CreateMaybeMessage<Reject>(nullptr);
+  }
+
+  Reject* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<Reject>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const Reject& from);
+  void MergeFrom(const Reject& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(Reject* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "Service.Reject";
+  }
+  private:
+  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_sc_2eproto);
+    return ::descriptor_table_sc_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kErrorCodeFieldNumber = 1,
+  };
+  // uint32 error_code = 1;
+  void clear_error_code();
+  ::PROTOBUF_NAMESPACE_ID::uint32 error_code() const;
+  void set_error_code(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_error_code() const;
+  void _internal_set_error_code(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:Service.Reject)
  private:
   class _Internal;
 
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr query_;
-  ::PROTOBUF_NAMESPACE_ID::int32 page_number_;
-  ::PROTOBUF_NAMESPACE_ID::int32 result_per_page_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 error_code_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_sc_2eproto;
+};
+// -------------------------------------------------------------------
+
+class HelloWorldRequestData :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Service.HelloWorldRequestData) */ {
+ public:
+  HelloWorldRequestData();
+  virtual ~HelloWorldRequestData();
+
+  HelloWorldRequestData(const HelloWorldRequestData& from);
+  HelloWorldRequestData(HelloWorldRequestData&& from) noexcept
+    : HelloWorldRequestData() {
+    *this = ::std::move(from);
+  }
+
+  inline HelloWorldRequestData& operator=(const HelloWorldRequestData& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline HelloWorldRequestData& operator=(HelloWorldRequestData&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const HelloWorldRequestData& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const HelloWorldRequestData* internal_default_instance() {
+    return reinterpret_cast<const HelloWorldRequestData*>(
+               &_HelloWorldRequestData_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    4;
+
+  friend void swap(HelloWorldRequestData& a, HelloWorldRequestData& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(HelloWorldRequestData* other) {
+    if (other == this) return;
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline HelloWorldRequestData* New() const final {
+    return CreateMaybeMessage<HelloWorldRequestData>(nullptr);
+  }
+
+  HelloWorldRequestData* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<HelloWorldRequestData>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const HelloWorldRequestData& from);
+  void MergeFrom(const HelloWorldRequestData& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(HelloWorldRequestData* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "Service.HelloWorldRequestData";
+  }
+  private:
+  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_sc_2eproto);
+    return ::descriptor_table_sc_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kUserIdFieldNumber = 1,
+  };
+  // string user_id = 1;
+  void clear_user_id();
+  const std::string& user_id() const;
+  void set_user_id(const std::string& value);
+  void set_user_id(std::string&& value);
+  void set_user_id(const char* value);
+  void set_user_id(const char* value, size_t size);
+  std::string* mutable_user_id();
+  std::string* release_user_id();
+  void set_allocated_user_id(std::string* user_id);
+  private:
+  const std::string& _internal_user_id() const;
+  void _internal_set_user_id(const std::string& value);
+  std::string* _internal_mutable_user_id();
+  public:
+
+  // @@protoc_insertion_point(class_scope:Service.HelloWorldRequestData)
+ private:
+  class _Internal;
+
+  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr user_id_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_sc_2eproto;
+};
+// -------------------------------------------------------------------
+
+class HelloWorldRespData :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Service.HelloWorldRespData) */ {
+ public:
+  HelloWorldRespData();
+  virtual ~HelloWorldRespData();
+
+  HelloWorldRespData(const HelloWorldRespData& from);
+  HelloWorldRespData(HelloWorldRespData&& from) noexcept
+    : HelloWorldRespData() {
+    *this = ::std::move(from);
+  }
+
+  inline HelloWorldRespData& operator=(const HelloWorldRespData& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline HelloWorldRespData& operator=(HelloWorldRespData&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const HelloWorldRespData& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const HelloWorldRespData* internal_default_instance() {
+    return reinterpret_cast<const HelloWorldRespData*>(
+               &_HelloWorldRespData_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    5;
+
+  friend void swap(HelloWorldRespData& a, HelloWorldRespData& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(HelloWorldRespData* other) {
+    if (other == this) return;
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline HelloWorldRespData* New() const final {
+    return CreateMaybeMessage<HelloWorldRespData>(nullptr);
+  }
+
+  HelloWorldRespData* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<HelloWorldRespData>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const HelloWorldRespData& from);
+  void MergeFrom(const HelloWorldRespData& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(HelloWorldRespData* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "Service.HelloWorldRespData";
+  }
+  private:
+  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_sc_2eproto);
+    return ::descriptor_table_sc_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kResponseFieldNumber = 1,
+  };
+  // string response = 1;
+  void clear_response();
+  const std::string& response() const;
+  void set_response(const std::string& value);
+  void set_response(std::string&& value);
+  void set_response(const char* value);
+  void set_response(const char* value, size_t size);
+  std::string* mutable_response();
+  std::string* release_response();
+  void set_allocated_response(std::string* response);
+  private:
+  const std::string& _internal_response() const;
+  void _internal_set_response(const std::string& value);
+  std::string* _internal_mutable_response();
+  public:
+
+  // @@protoc_insertion_point(class_scope:Service.HelloWorldRespData)
+ private:
+  class _Internal;
+
+  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr response_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_sc_2eproto;
+};
+// -------------------------------------------------------------------
+
+class OtherRequestData :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Service.OtherRequestData) */ {
+ public:
+  OtherRequestData();
+  virtual ~OtherRequestData();
+
+  OtherRequestData(const OtherRequestData& from);
+  OtherRequestData(OtherRequestData&& from) noexcept
+    : OtherRequestData() {
+    *this = ::std::move(from);
+  }
+
+  inline OtherRequestData& operator=(const OtherRequestData& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline OtherRequestData& operator=(OtherRequestData&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const OtherRequestData& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const OtherRequestData* internal_default_instance() {
+    return reinterpret_cast<const OtherRequestData*>(
+               &_OtherRequestData_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    6;
+
+  friend void swap(OtherRequestData& a, OtherRequestData& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(OtherRequestData* other) {
+    if (other == this) return;
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline OtherRequestData* New() const final {
+    return CreateMaybeMessage<OtherRequestData>(nullptr);
+  }
+
+  OtherRequestData* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<OtherRequestData>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const OtherRequestData& from);
+  void MergeFrom(const OtherRequestData& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(OtherRequestData* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "Service.OtherRequestData";
+  }
+  private:
+  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_sc_2eproto);
+    return ::descriptor_table_sc_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kUserIdFieldNumber = 1,
+  };
+  // string user_id = 1;
+  void clear_user_id();
+  const std::string& user_id() const;
+  void set_user_id(const std::string& value);
+  void set_user_id(std::string&& value);
+  void set_user_id(const char* value);
+  void set_user_id(const char* value, size_t size);
+  std::string* mutable_user_id();
+  std::string* release_user_id();
+  void set_allocated_user_id(std::string* user_id);
+  private:
+  const std::string& _internal_user_id() const;
+  void _internal_set_user_id(const std::string& value);
+  std::string* _internal_mutable_user_id();
+  public:
+
+  // @@protoc_insertion_point(class_scope:Service.OtherRequestData)
+ private:
+  class _Internal;
+
+  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr user_id_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_sc_2eproto;
+};
+// -------------------------------------------------------------------
+
+class OtherRespData :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Service.OtherRespData) */ {
+ public:
+  OtherRespData();
+  virtual ~OtherRespData();
+
+  OtherRespData(const OtherRespData& from);
+  OtherRespData(OtherRespData&& from) noexcept
+    : OtherRespData() {
+    *this = ::std::move(from);
+  }
+
+  inline OtherRespData& operator=(const OtherRespData& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline OtherRespData& operator=(OtherRespData&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const OtherRespData& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const OtherRespData* internal_default_instance() {
+    return reinterpret_cast<const OtherRespData*>(
+               &_OtherRespData_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    7;
+
+  friend void swap(OtherRespData& a, OtherRespData& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(OtherRespData* other) {
+    if (other == this) return;
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline OtherRespData* New() const final {
+    return CreateMaybeMessage<OtherRespData>(nullptr);
+  }
+
+  OtherRespData* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<OtherRespData>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const OtherRespData& from);
+  void MergeFrom(const OtherRespData& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(OtherRespData* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "Service.OtherRespData";
+  }
+  private:
+  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_sc_2eproto);
+    return ::descriptor_table_sc_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kResponseFieldNumber = 1,
+  };
+  // string response = 1;
+  void clear_response();
+  const std::string& response() const;
+  void set_response(const std::string& value);
+  void set_response(std::string&& value);
+  void set_response(const char* value);
+  void set_response(const char* value, size_t size);
+  std::string* mutable_response();
+  std::string* release_response();
+  void set_allocated_response(std::string* response);
+  private:
+  const std::string& _internal_response() const;
+  void _internal_set_response(const std::string& value);
+  std::string* _internal_mutable_response();
+  public:
+
+  // @@protoc_insertion_point(class_scope:Service.OtherRespData)
+ private:
+  class _Internal;
+
+  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr response_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_sc_2eproto;
 };
@@ -227,114 +1324,694 @@ class SearchRequest :
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
-// SearchRequest
+// Task
 
-// string query = 1;
-inline void SearchRequest::clear_query() {
-  query_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+// .Service.RequestType request_type = 1;
+inline void Task::clear_request_type() {
+  request_type_ = 0;
 }
-inline const std::string& SearchRequest::query() const {
-  // @@protoc_insertion_point(field_get:SearchRequest.query)
-  return _internal_query();
+inline ::Service::RequestType Task::_internal_request_type() const {
+  return static_cast< ::Service::RequestType >(request_type_);
 }
-inline void SearchRequest::set_query(const std::string& value) {
-  _internal_set_query(value);
-  // @@protoc_insertion_point(field_set:SearchRequest.query)
+inline ::Service::RequestType Task::request_type() const {
+  // @@protoc_insertion_point(field_get:Service.Task.request_type)
+  return _internal_request_type();
 }
-inline std::string* SearchRequest::mutable_query() {
-  // @@protoc_insertion_point(field_mutable:SearchRequest.query)
-  return _internal_mutable_query();
-}
-inline const std::string& SearchRequest::_internal_query() const {
-  return query_.GetNoArena();
-}
-inline void SearchRequest::_internal_set_query(const std::string& value) {
+inline void Task::_internal_set_request_type(::Service::RequestType value) {
   
-  query_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+  request_type_ = value;
 }
-inline void SearchRequest::set_query(std::string&& value) {
+inline void Task::set_request_type(::Service::RequestType value) {
+  _internal_set_request_type(value);
+  // @@protoc_insertion_point(field_set:Service.Task.request_type)
+}
+
+// .Service.HelloWorldRequestData hello_request_data = 2;
+inline bool Task::_internal_has_hello_request_data() const {
+  return data_case() == kHelloRequestData;
+}
+inline bool Task::has_hello_request_data() const {
+  return _internal_has_hello_request_data();
+}
+inline void Task::set_has_hello_request_data() {
+  _oneof_case_[0] = kHelloRequestData;
+}
+inline void Task::clear_hello_request_data() {
+  if (_internal_has_hello_request_data()) {
+    delete data_.hello_request_data_;
+    clear_has_data();
+  }
+}
+inline ::Service::HelloWorldRequestData* Task::release_hello_request_data() {
+  // @@protoc_insertion_point(field_release:Service.Task.hello_request_data)
+  if (_internal_has_hello_request_data()) {
+    clear_has_data();
+      ::Service::HelloWorldRequestData* temp = data_.hello_request_data_;
+    data_.hello_request_data_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::Service::HelloWorldRequestData& Task::_internal_hello_request_data() const {
+  return _internal_has_hello_request_data()
+      ? *data_.hello_request_data_
+      : *reinterpret_cast< ::Service::HelloWorldRequestData*>(&::Service::_HelloWorldRequestData_default_instance_);
+}
+inline const ::Service::HelloWorldRequestData& Task::hello_request_data() const {
+  // @@protoc_insertion_point(field_get:Service.Task.hello_request_data)
+  return _internal_hello_request_data();
+}
+inline ::Service::HelloWorldRequestData* Task::_internal_mutable_hello_request_data() {
+  if (!_internal_has_hello_request_data()) {
+    clear_data();
+    set_has_hello_request_data();
+    data_.hello_request_data_ = CreateMaybeMessage< ::Service::HelloWorldRequestData >(
+        GetArenaNoVirtual());
+  }
+  return data_.hello_request_data_;
+}
+inline ::Service::HelloWorldRequestData* Task::mutable_hello_request_data() {
+  // @@protoc_insertion_point(field_mutable:Service.Task.hello_request_data)
+  return _internal_mutable_hello_request_data();
+}
+
+// .Service.OtherRequestData other_request_data = 3;
+inline bool Task::_internal_has_other_request_data() const {
+  return data_case() == kOtherRequestData;
+}
+inline bool Task::has_other_request_data() const {
+  return _internal_has_other_request_data();
+}
+inline void Task::set_has_other_request_data() {
+  _oneof_case_[0] = kOtherRequestData;
+}
+inline void Task::clear_other_request_data() {
+  if (_internal_has_other_request_data()) {
+    delete data_.other_request_data_;
+    clear_has_data();
+  }
+}
+inline ::Service::OtherRequestData* Task::release_other_request_data() {
+  // @@protoc_insertion_point(field_release:Service.Task.other_request_data)
+  if (_internal_has_other_request_data()) {
+    clear_has_data();
+      ::Service::OtherRequestData* temp = data_.other_request_data_;
+    data_.other_request_data_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::Service::OtherRequestData& Task::_internal_other_request_data() const {
+  return _internal_has_other_request_data()
+      ? *data_.other_request_data_
+      : *reinterpret_cast< ::Service::OtherRequestData*>(&::Service::_OtherRequestData_default_instance_);
+}
+inline const ::Service::OtherRequestData& Task::other_request_data() const {
+  // @@protoc_insertion_point(field_get:Service.Task.other_request_data)
+  return _internal_other_request_data();
+}
+inline ::Service::OtherRequestData* Task::_internal_mutable_other_request_data() {
+  if (!_internal_has_other_request_data()) {
+    clear_data();
+    set_has_other_request_data();
+    data_.other_request_data_ = CreateMaybeMessage< ::Service::OtherRequestData >(
+        GetArenaNoVirtual());
+  }
+  return data_.other_request_data_;
+}
+inline ::Service::OtherRequestData* Task::mutable_other_request_data() {
+  // @@protoc_insertion_point(field_mutable:Service.Task.other_request_data)
+  return _internal_mutable_other_request_data();
+}
+
+inline bool Task::has_data() const {
+  return data_case() != DATA_NOT_SET;
+}
+inline void Task::clear_has_data() {
+  _oneof_case_[0] = DATA_NOT_SET;
+}
+inline Task::DataCase Task::data_case() const {
+  return Task::DataCase(_oneof_case_[0]);
+}
+// -------------------------------------------------------------------
+
+// TaskResult
+
+// .Service.RequestType request_type = 1;
+inline void TaskResult::clear_request_type() {
+  request_type_ = 0;
+}
+inline ::Service::RequestType TaskResult::_internal_request_type() const {
+  return static_cast< ::Service::RequestType >(request_type_);
+}
+inline ::Service::RequestType TaskResult::request_type() const {
+  // @@protoc_insertion_point(field_get:Service.TaskResult.request_type)
+  return _internal_request_type();
+}
+inline void TaskResult::_internal_set_request_type(::Service::RequestType value) {
   
-  query_.SetNoArena(
+  request_type_ = value;
+}
+inline void TaskResult::set_request_type(::Service::RequestType value) {
+  _internal_set_request_type(value);
+  // @@protoc_insertion_point(field_set:Service.TaskResult.request_type)
+}
+
+// .Service.Confirm confirm = 2;
+inline bool TaskResult::_internal_has_confirm() const {
+  return data_case() == kConfirm;
+}
+inline bool TaskResult::has_confirm() const {
+  return _internal_has_confirm();
+}
+inline void TaskResult::set_has_confirm() {
+  _oneof_case_[0] = kConfirm;
+}
+inline void TaskResult::clear_confirm() {
+  if (_internal_has_confirm()) {
+    delete data_.confirm_;
+    clear_has_data();
+  }
+}
+inline ::Service::Confirm* TaskResult::release_confirm() {
+  // @@protoc_insertion_point(field_release:Service.TaskResult.confirm)
+  if (_internal_has_confirm()) {
+    clear_has_data();
+      ::Service::Confirm* temp = data_.confirm_;
+    data_.confirm_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::Service::Confirm& TaskResult::_internal_confirm() const {
+  return _internal_has_confirm()
+      ? *data_.confirm_
+      : *reinterpret_cast< ::Service::Confirm*>(&::Service::_Confirm_default_instance_);
+}
+inline const ::Service::Confirm& TaskResult::confirm() const {
+  // @@protoc_insertion_point(field_get:Service.TaskResult.confirm)
+  return _internal_confirm();
+}
+inline ::Service::Confirm* TaskResult::_internal_mutable_confirm() {
+  if (!_internal_has_confirm()) {
+    clear_data();
+    set_has_confirm();
+    data_.confirm_ = CreateMaybeMessage< ::Service::Confirm >(
+        GetArenaNoVirtual());
+  }
+  return data_.confirm_;
+}
+inline ::Service::Confirm* TaskResult::mutable_confirm() {
+  // @@protoc_insertion_point(field_mutable:Service.TaskResult.confirm)
+  return _internal_mutable_confirm();
+}
+
+// .Service.Reject reject = 3;
+inline bool TaskResult::_internal_has_reject() const {
+  return data_case() == kReject;
+}
+inline bool TaskResult::has_reject() const {
+  return _internal_has_reject();
+}
+inline void TaskResult::set_has_reject() {
+  _oneof_case_[0] = kReject;
+}
+inline void TaskResult::clear_reject() {
+  if (_internal_has_reject()) {
+    delete data_.reject_;
+    clear_has_data();
+  }
+}
+inline ::Service::Reject* TaskResult::release_reject() {
+  // @@protoc_insertion_point(field_release:Service.TaskResult.reject)
+  if (_internal_has_reject()) {
+    clear_has_data();
+      ::Service::Reject* temp = data_.reject_;
+    data_.reject_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::Service::Reject& TaskResult::_internal_reject() const {
+  return _internal_has_reject()
+      ? *data_.reject_
+      : *reinterpret_cast< ::Service::Reject*>(&::Service::_Reject_default_instance_);
+}
+inline const ::Service::Reject& TaskResult::reject() const {
+  // @@protoc_insertion_point(field_get:Service.TaskResult.reject)
+  return _internal_reject();
+}
+inline ::Service::Reject* TaskResult::_internal_mutable_reject() {
+  if (!_internal_has_reject()) {
+    clear_data();
+    set_has_reject();
+    data_.reject_ = CreateMaybeMessage< ::Service::Reject >(
+        GetArenaNoVirtual());
+  }
+  return data_.reject_;
+}
+inline ::Service::Reject* TaskResult::mutable_reject() {
+  // @@protoc_insertion_point(field_mutable:Service.TaskResult.reject)
+  return _internal_mutable_reject();
+}
+
+inline bool TaskResult::has_data() const {
+  return data_case() != DATA_NOT_SET;
+}
+inline void TaskResult::clear_has_data() {
+  _oneof_case_[0] = DATA_NOT_SET;
+}
+inline TaskResult::DataCase TaskResult::data_case() const {
+  return TaskResult::DataCase(_oneof_case_[0]);
+}
+// -------------------------------------------------------------------
+
+// Confirm
+
+// .Service.HelloWorldRespData hello_response = 1;
+inline bool Confirm::_internal_has_hello_response() const {
+  return data_case() == kHelloResponse;
+}
+inline bool Confirm::has_hello_response() const {
+  return _internal_has_hello_response();
+}
+inline void Confirm::set_has_hello_response() {
+  _oneof_case_[0] = kHelloResponse;
+}
+inline void Confirm::clear_hello_response() {
+  if (_internal_has_hello_response()) {
+    delete data_.hello_response_;
+    clear_has_data();
+  }
+}
+inline ::Service::HelloWorldRespData* Confirm::release_hello_response() {
+  // @@protoc_insertion_point(field_release:Service.Confirm.hello_response)
+  if (_internal_has_hello_response()) {
+    clear_has_data();
+      ::Service::HelloWorldRespData* temp = data_.hello_response_;
+    data_.hello_response_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::Service::HelloWorldRespData& Confirm::_internal_hello_response() const {
+  return _internal_has_hello_response()
+      ? *data_.hello_response_
+      : *reinterpret_cast< ::Service::HelloWorldRespData*>(&::Service::_HelloWorldRespData_default_instance_);
+}
+inline const ::Service::HelloWorldRespData& Confirm::hello_response() const {
+  // @@protoc_insertion_point(field_get:Service.Confirm.hello_response)
+  return _internal_hello_response();
+}
+inline ::Service::HelloWorldRespData* Confirm::_internal_mutable_hello_response() {
+  if (!_internal_has_hello_response()) {
+    clear_data();
+    set_has_hello_response();
+    data_.hello_response_ = CreateMaybeMessage< ::Service::HelloWorldRespData >(
+        GetArenaNoVirtual());
+  }
+  return data_.hello_response_;
+}
+inline ::Service::HelloWorldRespData* Confirm::mutable_hello_response() {
+  // @@protoc_insertion_point(field_mutable:Service.Confirm.hello_response)
+  return _internal_mutable_hello_response();
+}
+
+// .Service.OtherRespData other_response = 2;
+inline bool Confirm::_internal_has_other_response() const {
+  return data_case() == kOtherResponse;
+}
+inline bool Confirm::has_other_response() const {
+  return _internal_has_other_response();
+}
+inline void Confirm::set_has_other_response() {
+  _oneof_case_[0] = kOtherResponse;
+}
+inline void Confirm::clear_other_response() {
+  if (_internal_has_other_response()) {
+    delete data_.other_response_;
+    clear_has_data();
+  }
+}
+inline ::Service::OtherRespData* Confirm::release_other_response() {
+  // @@protoc_insertion_point(field_release:Service.Confirm.other_response)
+  if (_internal_has_other_response()) {
+    clear_has_data();
+      ::Service::OtherRespData* temp = data_.other_response_;
+    data_.other_response_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::Service::OtherRespData& Confirm::_internal_other_response() const {
+  return _internal_has_other_response()
+      ? *data_.other_response_
+      : *reinterpret_cast< ::Service::OtherRespData*>(&::Service::_OtherRespData_default_instance_);
+}
+inline const ::Service::OtherRespData& Confirm::other_response() const {
+  // @@protoc_insertion_point(field_get:Service.Confirm.other_response)
+  return _internal_other_response();
+}
+inline ::Service::OtherRespData* Confirm::_internal_mutable_other_response() {
+  if (!_internal_has_other_response()) {
+    clear_data();
+    set_has_other_response();
+    data_.other_response_ = CreateMaybeMessage< ::Service::OtherRespData >(
+        GetArenaNoVirtual());
+  }
+  return data_.other_response_;
+}
+inline ::Service::OtherRespData* Confirm::mutable_other_response() {
+  // @@protoc_insertion_point(field_mutable:Service.Confirm.other_response)
+  return _internal_mutable_other_response();
+}
+
+inline bool Confirm::has_data() const {
+  return data_case() != DATA_NOT_SET;
+}
+inline void Confirm::clear_has_data() {
+  _oneof_case_[0] = DATA_NOT_SET;
+}
+inline Confirm::DataCase Confirm::data_case() const {
+  return Confirm::DataCase(_oneof_case_[0]);
+}
+// -------------------------------------------------------------------
+
+// Reject
+
+// uint32 error_code = 1;
+inline void Reject::clear_error_code() {
+  error_code_ = 0u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint32 Reject::_internal_error_code() const {
+  return error_code_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint32 Reject::error_code() const {
+  // @@protoc_insertion_point(field_get:Service.Reject.error_code)
+  return _internal_error_code();
+}
+inline void Reject::_internal_set_error_code(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  
+  error_code_ = value;
+}
+inline void Reject::set_error_code(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  _internal_set_error_code(value);
+  // @@protoc_insertion_point(field_set:Service.Reject.error_code)
+}
+
+// -------------------------------------------------------------------
+
+// HelloWorldRequestData
+
+// string user_id = 1;
+inline void HelloWorldRequestData::clear_user_id() {
+  user_id_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline const std::string& HelloWorldRequestData::user_id() const {
+  // @@protoc_insertion_point(field_get:Service.HelloWorldRequestData.user_id)
+  return _internal_user_id();
+}
+inline void HelloWorldRequestData::set_user_id(const std::string& value) {
+  _internal_set_user_id(value);
+  // @@protoc_insertion_point(field_set:Service.HelloWorldRequestData.user_id)
+}
+inline std::string* HelloWorldRequestData::mutable_user_id() {
+  // @@protoc_insertion_point(field_mutable:Service.HelloWorldRequestData.user_id)
+  return _internal_mutable_user_id();
+}
+inline const std::string& HelloWorldRequestData::_internal_user_id() const {
+  return user_id_.GetNoArena();
+}
+inline void HelloWorldRequestData::_internal_set_user_id(const std::string& value) {
+  
+  user_id_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+}
+inline void HelloWorldRequestData::set_user_id(std::string&& value) {
+  
+  user_id_.SetNoArena(
     &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:SearchRequest.query)
+  // @@protoc_insertion_point(field_set_rvalue:Service.HelloWorldRequestData.user_id)
 }
-inline void SearchRequest::set_query(const char* value) {
+inline void HelloWorldRequestData::set_user_id(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   
-  query_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:SearchRequest.query)
+  user_id_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:Service.HelloWorldRequestData.user_id)
 }
-inline void SearchRequest::set_query(const char* value, size_t size) {
+inline void HelloWorldRequestData::set_user_id(const char* value, size_t size) {
   
-  query_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+  user_id_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:SearchRequest.query)
+  // @@protoc_insertion_point(field_set_pointer:Service.HelloWorldRequestData.user_id)
 }
-inline std::string* SearchRequest::_internal_mutable_query() {
+inline std::string* HelloWorldRequestData::_internal_mutable_user_id() {
   
-  return query_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  return user_id_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
-inline std::string* SearchRequest::release_query() {
-  // @@protoc_insertion_point(field_release:SearchRequest.query)
+inline std::string* HelloWorldRequestData::release_user_id() {
+  // @@protoc_insertion_point(field_release:Service.HelloWorldRequestData.user_id)
   
-  return query_.ReleaseNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  return user_id_.ReleaseNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
-inline void SearchRequest::set_allocated_query(std::string* query) {
-  if (query != nullptr) {
+inline void HelloWorldRequestData::set_allocated_user_id(std::string* user_id) {
+  if (user_id != nullptr) {
     
   } else {
     
   }
-  query_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), query);
-  // @@protoc_insertion_point(field_set_allocated:SearchRequest.query)
+  user_id_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), user_id);
+  // @@protoc_insertion_point(field_set_allocated:Service.HelloWorldRequestData.user_id)
 }
 
-// int32 page_number = 2;
-inline void SearchRequest::clear_page_number() {
-  page_number_ = 0;
+// -------------------------------------------------------------------
+
+// HelloWorldRespData
+
+// string response = 1;
+inline void HelloWorldRespData::clear_response() {
+  response_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 SearchRequest::_internal_page_number() const {
-  return page_number_;
+inline const std::string& HelloWorldRespData::response() const {
+  // @@protoc_insertion_point(field_get:Service.HelloWorldRespData.response)
+  return _internal_response();
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 SearchRequest::page_number() const {
-  // @@protoc_insertion_point(field_get:SearchRequest.page_number)
-  return _internal_page_number();
+inline void HelloWorldRespData::set_response(const std::string& value) {
+  _internal_set_response(value);
+  // @@protoc_insertion_point(field_set:Service.HelloWorldRespData.response)
 }
-inline void SearchRequest::_internal_set_page_number(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline std::string* HelloWorldRespData::mutable_response() {
+  // @@protoc_insertion_point(field_mutable:Service.HelloWorldRespData.response)
+  return _internal_mutable_response();
+}
+inline const std::string& HelloWorldRespData::_internal_response() const {
+  return response_.GetNoArena();
+}
+inline void HelloWorldRespData::_internal_set_response(const std::string& value) {
   
-  page_number_ = value;
+  response_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
 }
-inline void SearchRequest::set_page_number(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  _internal_set_page_number(value);
-  // @@protoc_insertion_point(field_set:SearchRequest.page_number)
+inline void HelloWorldRespData::set_response(std::string&& value) {
+  
+  response_.SetNoArena(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:Service.HelloWorldRespData.response)
+}
+inline void HelloWorldRespData::set_response(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  response_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:Service.HelloWorldRespData.response)
+}
+inline void HelloWorldRespData::set_response(const char* value, size_t size) {
+  
+  response_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:Service.HelloWorldRespData.response)
+}
+inline std::string* HelloWorldRespData::_internal_mutable_response() {
+  
+  return response_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline std::string* HelloWorldRespData::release_response() {
+  // @@protoc_insertion_point(field_release:Service.HelloWorldRespData.response)
+  
+  return response_.ReleaseNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline void HelloWorldRespData::set_allocated_response(std::string* response) {
+  if (response != nullptr) {
+    
+  } else {
+    
+  }
+  response_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), response);
+  // @@protoc_insertion_point(field_set_allocated:Service.HelloWorldRespData.response)
 }
 
-// int32 result_per_page = 3;
-inline void SearchRequest::clear_result_per_page() {
-  result_per_page_ = 0;
+// -------------------------------------------------------------------
+
+// OtherRequestData
+
+// string user_id = 1;
+inline void OtherRequestData::clear_user_id() {
+  user_id_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 SearchRequest::_internal_result_per_page() const {
-  return result_per_page_;
+inline const std::string& OtherRequestData::user_id() const {
+  // @@protoc_insertion_point(field_get:Service.OtherRequestData.user_id)
+  return _internal_user_id();
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 SearchRequest::result_per_page() const {
-  // @@protoc_insertion_point(field_get:SearchRequest.result_per_page)
-  return _internal_result_per_page();
+inline void OtherRequestData::set_user_id(const std::string& value) {
+  _internal_set_user_id(value);
+  // @@protoc_insertion_point(field_set:Service.OtherRequestData.user_id)
 }
-inline void SearchRequest::_internal_set_result_per_page(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline std::string* OtherRequestData::mutable_user_id() {
+  // @@protoc_insertion_point(field_mutable:Service.OtherRequestData.user_id)
+  return _internal_mutable_user_id();
+}
+inline const std::string& OtherRequestData::_internal_user_id() const {
+  return user_id_.GetNoArena();
+}
+inline void OtherRequestData::_internal_set_user_id(const std::string& value) {
   
-  result_per_page_ = value;
+  user_id_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
 }
-inline void SearchRequest::set_result_per_page(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  _internal_set_result_per_page(value);
-  // @@protoc_insertion_point(field_set:SearchRequest.result_per_page)
+inline void OtherRequestData::set_user_id(std::string&& value) {
+  
+  user_id_.SetNoArena(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:Service.OtherRequestData.user_id)
+}
+inline void OtherRequestData::set_user_id(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  user_id_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:Service.OtherRequestData.user_id)
+}
+inline void OtherRequestData::set_user_id(const char* value, size_t size) {
+  
+  user_id_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:Service.OtherRequestData.user_id)
+}
+inline std::string* OtherRequestData::_internal_mutable_user_id() {
+  
+  return user_id_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline std::string* OtherRequestData::release_user_id() {
+  // @@protoc_insertion_point(field_release:Service.OtherRequestData.user_id)
+  
+  return user_id_.ReleaseNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline void OtherRequestData::set_allocated_user_id(std::string* user_id) {
+  if (user_id != nullptr) {
+    
+  } else {
+    
+  }
+  user_id_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), user_id);
+  // @@protoc_insertion_point(field_set_allocated:Service.OtherRequestData.user_id)
+}
+
+// -------------------------------------------------------------------
+
+// OtherRespData
+
+// string response = 1;
+inline void OtherRespData::clear_response() {
+  response_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline const std::string& OtherRespData::response() const {
+  // @@protoc_insertion_point(field_get:Service.OtherRespData.response)
+  return _internal_response();
+}
+inline void OtherRespData::set_response(const std::string& value) {
+  _internal_set_response(value);
+  // @@protoc_insertion_point(field_set:Service.OtherRespData.response)
+}
+inline std::string* OtherRespData::mutable_response() {
+  // @@protoc_insertion_point(field_mutable:Service.OtherRespData.response)
+  return _internal_mutable_response();
+}
+inline const std::string& OtherRespData::_internal_response() const {
+  return response_.GetNoArena();
+}
+inline void OtherRespData::_internal_set_response(const std::string& value) {
+  
+  response_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+}
+inline void OtherRespData::set_response(std::string&& value) {
+  
+  response_.SetNoArena(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:Service.OtherRespData.response)
+}
+inline void OtherRespData::set_response(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  response_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:Service.OtherRespData.response)
+}
+inline void OtherRespData::set_response(const char* value, size_t size) {
+  
+  response_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:Service.OtherRespData.response)
+}
+inline std::string* OtherRespData::_internal_mutable_response() {
+  
+  return response_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline std::string* OtherRespData::release_response() {
+  // @@protoc_insertion_point(field_release:Service.OtherRespData.response)
+  
+  return response_.ReleaseNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline void OtherRespData::set_allocated_response(std::string* response) {
+  if (response != nullptr) {
+    
+  } else {
+    
+  }
+  response_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), response);
+  // @@protoc_insertion_point(field_set_allocated:Service.OtherRespData.response)
 }
 
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 
 // @@protoc_insertion_point(namespace_scope)
 
+}  // namespace Service
+
+PROTOBUF_NAMESPACE_OPEN
+
+template <> struct is_proto_enum< ::Service::RequestType> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::Service::RequestType>() {
+  return ::Service::RequestType_descriptor();
+}
+
+PROTOBUF_NAMESPACE_CLOSE
 
 // @@protoc_insertion_point(global_scope)
 

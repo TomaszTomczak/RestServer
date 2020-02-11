@@ -1,7 +1,62 @@
 syntax = "proto3";
 
-message SearchRequest {
-  string query = 1;
-  int32 page_number = 2;
-  int32 result_per_page = 3;
+package Service;
+
+enum RequestType
+{
+    HELLOWORLD = 0x0000;
+    OTHER      = 0x0001;
+}
+
+message Task 
+{
+  RequestType request_type = 1;
+  oneof data
+  {
+      HelloWorldRequestData hello_request_data = 2;
+      OtherRequestData other_request_data= 3;
+  }
+}
+
+message TaskResult
+{
+    RequestType request_type = 1;
+    oneof data
+    {
+        Confirm confirm = 2;
+        Reject  reject = 3;
+    }
+}
+
+message Confirm
+{
+    oneof data
+    {
+        HelloWorldRespData hello_response = 1;
+        OtherRespData other_response = 2;
+    }
+}
+
+message Reject
+{
+    uint32 error_code = 1; // implement error codes
+}
+
+message HelloWorldRequestData
+{
+    string user_id = 1;
+}
+
+message HelloWorldRespData
+{
+    string response = 1;
+}
+
+message OtherRequestData
+{
+    string user_id = 1;
+}
+message OtherRespData
+{
+    string response = 1;
 }

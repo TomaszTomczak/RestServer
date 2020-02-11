@@ -3,17 +3,18 @@
 namespace RestService
 {
 
-TaskResult HelloWorldService::handleRequest(const Task& task)
+Service::TaskResult HelloWorldService::handleRequest(const Service::Task& task)
 {
-    TaskResult returnData;
-    if(task.request == RequestType::HELLOWORLD)
+    Service::TaskResult returnData;
+    if(task.request_type() == Service::RequestType::HELLOWORLD)
     {
-        returnData.result = true;
-        returnData.someData = "HelloWorld";
+        std::string userId = task.hello_request_data().user_id();
+        auto helloRetData = returnData.mutable_confirm();
+        helloRetData->mutable_hello_response()->set_response("Hello world "+userId);
     }
     else
     {
-        returnData.result = false;
+        returnData.mutable_reject()->set_error_code(5); //5 - whatever it means
     }
     return returnData;    
 
