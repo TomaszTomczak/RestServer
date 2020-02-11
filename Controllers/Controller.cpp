@@ -1,6 +1,7 @@
 #include "Controller.hpp"
 #include "jwt/jwt.hpp"
 #include "Task.hpp"
+#include "sc.pb.h"
 
 namespace RestServer
 {
