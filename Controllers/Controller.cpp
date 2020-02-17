@@ -27,11 +27,21 @@ void Controller::login(const Pistache::Rest::Request &request, Pistache::Http::R
         std::cout << "------------" << std::endl;*/
        
         Guard guard(controllerLock);
-        auto logData = nlohmann::json::parse(request.body());
-
-        std::string user = logData["userId"].get<std::string>();
-        std::string password = logData["password"].get<std::string>();
-
+        nlohmann::json logData;
+        std::string user;
+        std::string password;
+        try
+        {
+          logData = nlohmann::json::parse(request.body());
+          user = logData["userId"].get<std::string>();
+          password = logData["password"].get<std::string>();
+        }
+        catch(const std::exception& e)
+        {
+            response.send(Pistache::Http::Code::Forbidden, "Broken data");
+            std::cerr << e.what() << std::endl;
+        }
+   
         std::string dbpassword;
         bool result = dbmanager->getUserData(user, dbpassword);
 
