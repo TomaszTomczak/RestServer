@@ -51,6 +51,7 @@ Server configuration:
 	 
 	 
 	 
-	 build command (TODO: cmake):
-	 
-	 g++ Authorization/Authorization.cpp Controllers/Controller.cpp Database/FakeDB.cpp Services/HelloWorldService.cpp Services/ServiceManager.cpp RestEndpoint.cpp Protocols/generated/sc.pb.cc app.cpp -o restApp -I Authorization -I Controllers -I Database -I Services -I Protocols/generated -I/repo/cpp-jwt/include -I/usr/local/openssl/include -lpistache -lpthread -lcrypto -lssl -lprotobuf
+	
+Build
+> cmake .
+> make
